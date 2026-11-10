@@ -8,6 +8,14 @@
 <meta property="og:title" content="My Jeanny Coffee | Mobile Coffee Cart Queenstown">
 <meta property="og:description" content="Mobile coffee cart serving Queenstown-Lakes, Arrowtown & Southland. Quality espresso for markets, events & corporate functions. Solo woman-owned.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://jeanz888.github.io/My-Jeanny-Coffee-Cart-Landing-Page/">
+<meta property="og:site_name" content="My Jeanny Coffee">
+<meta property="og:image" content="https://jeanz888.github.io/My-Jeanny-Coffee-Cart-Landing-Page/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="My Jeanny Coffee logo – Queenstown's favourite mobile coffee cart">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jeanz888.github.io/My-Jeanny-Coffee-Cart-Landing-Page/og-image.jpg">
 <meta name="theme-color" content="#f15a24">
 <style>
 :root {
@@ -193,6 +201,8 @@ footer .built { font: 11px Arial,sans-serif; color: rgba(255,255,255,.38); margi
 }
 
 </style>
+<!-- Event Hire packages styles (also fixes the phone menu). Relative path so it works on GitHub Pages. -->
+<link rel="stylesheet" href="styles/packages.css">
 </head>
 <body>
 <header class="site-header">
@@ -201,6 +211,7 @@ footer .built { font: 11px Arial,sans-serif; color: rgba(255,255,255,.38); margi
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#about">About us</a>
       <a href="#services">What we offer</a>
+      <a href="#packages">Hire</a>
       <a href="#find-us">Find us</a>
       <a href="#booking">Event booking</a>
       <a class="nav-cta" href="#contact">Enquire Now</a>
@@ -258,6 +269,77 @@ footer .built { font: 11px Arial,sans-serif; color: rgba(255,255,255,.38); margi
   </section>
 
 
+  <!-- ═════════════════ EVENT HIRE PACKAGES ═════════════════
+       To edit: package names, hours and "best for" text are in the three cards below.
+       Only the "from $500" starting price shows on the site.
+       Full prices are sent privately when someone asks for a quote.
+       Styles for this section are in styles/packages.css
+  ══════════════════════════════════════════════════════════ -->
+  <section class="packages-section" id="packages">
+    <div class="packages-inner">
+      <div class="section-kicker">Event Hire</div>
+      <h2>Coffee Cart <em>Packages</em></h2>
+      <p class="packages-intro">You host, we pour. Your guests enjoy barista coffee and you pay one simple price. No selling, no queue for cash.</p>
+
+      <!-- The three package cards -->
+      <div class="pkg-grid">
+
+        <!-- Card 1: The Quick Cup -->
+        <div class="pkg pkg--quick">
+          <span class="pkg__icon" aria-hidden="true">☕</span>
+          <h3 class="pkg__name">The Quick Cup</h3>
+          <div class="pkg__hours">2 hours</div>
+          <p class="pkg__for">Open homes, morning teas, launches and team shouts.</p>
+          <button type="button" class="btn pkg-btn" onclick="pickPackage('The Quick Cup', '2 hours')">Get a quote</button>
+        </div>
+
+        <!-- Card 2: The Open Day (marked "Most popular") -->
+        <div class="pkg pkg--open">
+          <span class="pkg__tag">Most popular</span>
+          <span class="pkg__icon" aria-hidden="true">🎉</span>
+          <h3 class="pkg__name">The Open Day</h3>
+          <div class="pkg__hours">4 hours</div>
+          <p class="pkg__for">Open days, community events, birthdays and Christmas parties.</p>
+          <button type="button" class="btn pkg-btn" onclick="pickPackage('The Open Day', '4 hours')">Get a quote</button>
+        </div>
+
+        <!-- Card 3: The Full Day -->
+        <div class="pkg pkg--full">
+          <span class="pkg__icon" aria-hidden="true">💍</span>
+          <h3 class="pkg__name">The Full Day</h3>
+          <div class="pkg__hours">6 hours</div>
+          <p class="pkg__for">Weddings, conferences, festivals and sports days.</p>
+          <button type="button" class="btn pkg-btn" onclick="pickPackage('The Full Day', '6 hours')">Get a quote</button>
+        </div>
+
+      </div>
+
+      <!-- The one starting price (do not add per-package prices here) -->
+      <div class="pkg-price">
+        <div class="pkg-price__from">Event hire from</div>
+        <div class="pkg-price__num">$500</div>
+        <div class="pkg-price__note">2-hour minimum · longer bookings are better value per hour</div>
+      </div>
+
+      <!-- What every package includes -->
+      <div class="pkg-includes">
+        <div class="section-kicker">Every package includes</div>
+        <ul class="pkg-incl">
+          <li>Your own barista and coffee cart</li>
+          <li>Up to 100 drinks for your guests</li>
+          <li>Espresso coffees, hot chocolate and chai</li>
+          <li>Dairy and plant-based milks</li>
+          <li>Cups, lids, sugar and all supplies</li>
+          <li>Setup and pack-down</li>
+          <li>Travel in the Wakatipu Basin</li>
+          <li>QLDC registered and EWOF certified</li>
+        </ul>
+      </div>
+      <p class="pkg-small">Need more than 100 drinks, a different time, or an event outside the Wakatipu Basin? Ask us. We send every quote within 24 hours.</p>
+    </div>
+  </section>
+  <!-- ═════════════════ END OF EVENT HIRE PACKAGES ═════════════════ -->
+
   <section class="social-section" id="find-us">
     <div class="social-inner">
       <div class="section-kicker">Find us & stay connected</div>
@@ -280,6 +362,8 @@ footer .built { font: 11px Arial,sans-serif; color: rgba(255,255,255,.38); margi
       <div class="section-kicker">Weddings · Corporate events · Private functions</div>
       <h2>Let's bring great coffee to your event</h2>
       <p>Tell Jeanny a little about your event. When you submit, your details will be prepared as a message and Messenger will open so you can send the enquiry directly to My Jeanny Coffee.</p>
+      <!-- Shows which package the visitor picked (filled in by pickPackage below) -->
+      <div id="pkg-picked" class="pkg-picked" role="status" aria-live="polite"></div>
       <form class="booking-form" id="eventEnquiryForm">
         <div class="form-field">
           <label for="eventName">Your name *</label>
@@ -300,6 +384,7 @@ footer .built { font: 11px Arial,sans-serif; color: rgba(255,255,255,.38); margi
             <option>Wedding</option>
             <option>Corporate event</option>
             <option>Private function</option>
+            <option>Open day or open home</option>
             <option>Festival or market</option>
             <option>Other</option>
           </select>
@@ -346,6 +431,11 @@ footer .built { font: 11px Arial,sans-serif; color: rgba(255,255,255,.38); margi
 <footer>
   <div class="biz-name">My Jeanny Coffee</div>
   <div class="tagline">From my cart to your heart.</div>
+  <!-- Footer links -->
+  <nav class="footer-links" aria-label="Footer links">
+    <a href="#packages">Hire</a>
+    <a href="#booking">Event booking</a>
+  </nav>
   <div class="built">Queenstown-Lakes, New Zealand · Built with Jeanny Studio · AI-powered</div>
 </footer>
 
@@ -391,6 +481,38 @@ footer .built { font: 11px Arial,sans-serif; color: rgba(255,255,255,.38); margi
     window.open('https://m.me/MyJeannyCoffee', '_blank', 'noopener');
   });
 })();
+</script>
+
+<script>
+/* ═════════════════ EVENT HIRE: "Get a quote" buttons ═════════════════
+   Runs when a visitor clicks "Get a quote" on a package card.
+   1. Writes "Package: [name] ([hours])" at the top of the message box
+      ("Anything else we should know?"). If a package line is already there,
+      it is replaced, so only one package is ever listed.
+   2. Shows a short note above the booking form.
+   3. Scrolls down to the booking form.
+   ════════════════════════════════════════════════════════════════════ */
+function pickPackage(name, hours) {
+  var msgBox = document.getElementById('eventDetails');   // the form's message box
+  var line   = 'Package: ' + name + ' (' + hours + ')';
+
+  if (msgBox) {
+    if (/^Package: .*$/m.test(msgBox.value)) {
+      msgBox.value = msgBox.value.replace(/^Package: .*$/m, line);   // swap the old package
+    } else {
+      msgBox.value = line + (msgBox.value ? '\n' + msgBox.value : ''); // add it on the first line
+    }
+  }
+
+  var note = document.getElementById('pkg-picked');
+  if (note) {
+    note.textContent = '✦ You picked ' + name + ' (' + hours + '). Fill in your details and we will send your quote.';
+    note.style.display = 'block';
+  }
+
+  var booking = document.getElementById('booking');      // the booking section
+  if (booking) booking.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 </body>
